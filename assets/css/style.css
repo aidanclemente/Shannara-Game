@@ -9,9 +9,9 @@ header {
 }
 
 img {
-	width: 130px;
-	height: 90px;
-	border: 1px solid black;
+	width: 132px;
+	height: 91px;
+
 }
 
 button {
@@ -28,12 +28,6 @@ button {
 	margin-left: auto;
 }
 
-
-#defender {
-	background-color: black;
-	border: 2px solid green;
-}
-
-#characters {
+#characters, #enemies {
 	padding: 0px;
 }
