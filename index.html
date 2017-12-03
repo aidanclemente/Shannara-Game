@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shannara</title>
+	<meta charset="utf-8">
+	<meta name=viewport content= "width=device-width initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Kelly+Slab" rel="stylesheet">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid" id="mainContainer">
+		<header class="float-right" id="header">
+			<h2>Shannara RPG</h2>
+		</header>
+<!-- Characters to choose from and Your Character -->
+		<section class="container-fluid">
+			<div class="row">
+				<h3>Your Character</h3>
+			</div>
+			<div class="row col-sm-8"  id="characters">
+			<!-- Amberle -->
+					<div class="col-sm-2" id="amberle">				
+						<button class="character amberle" value="amberle">
+							<div class="row text-center name">Amberle</div>
+							<img class="row text-center" src="assets/images/amberle.jpg">
+							<div class="row text-center" id="amberleHP">XXX</div>
+						</button>					
+					</div>
+			<!-- Eretria -->
+					<div class="col-sm-2" id="eretria">				
+						<button class="character eretria" value="eretria">
+							<div class="row text-center name">Eretria</div>
+							<img class="row text-center" src="assets/images/eretria.jpg">
+							<div class="row text-center" id="eretriaHP">YYY</div>
+						</button>					
+					</div>
+			<!-- Dagda Mor -->
+					<div class="col-sm-2" id="dagdaMor">				
+						<button class="character dagdaMor" value="dagdaMor">
+							<div class="row text-center name">Dagda mor</div>
+							<img class="row text-center" src="assets/images/dagdaMor.jpg">
+							<div class="row text-center" id="dagdaMorHP">ZZZ</div>
+						</button>					
+					</div>
+			<!-- Bandon -->
+					<div class="col-sm-2" id="bandon">			
+						<button class="character bandon" value="bandon">
+							<div class="row text-center name">Bandon</div>
+							<img class="row text-center" src="assets/images/bandon.jpg">
+							<div class="row text-center" id="bandonHP">AAA</div>
+						</button>					
+					</div>					
+			</div>
+		</section>
+<!-- Enemies to Fight pictures -->
+		<section class="container-fluid">	
+			<h3>Enemies Available to Attack</h3>
+			<div class="row" id="enemies">		
+			</div>
+		</section>
+<!-- Fight section with button -->
+		<section class="container-fluid">
+			<div class="row">
+				<h3>Fight Section</h3> 
+			</div>
+			<div class="row">
+				<button class="btn btn-default">Attack!</button>
+			</div>
+		</section>
+<!-- Defender and naration about game -->
+		<section class="container-fluid">
+			<div class="row">
+				<div id="defenderArea"></div>
+				<h3>Defender</h3>
+			</div>
+			<div class="row">
+				<div id="narration">The Words go here</div>
+			</div>
+		</section>
+	</div>
+	
+<script src="assets/javascript/game.js" type="text/javascript"></script>
+</body>
+</html>

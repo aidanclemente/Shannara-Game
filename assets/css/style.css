@@ -1,0 +1,40 @@
+body {
+	font-family: 'Kelly Slab', cursive;
+	background-image: url(../images/background.jpg);
+}
+
+header {
+	margin-top: 10px;
+	margin-right: 200px;
+}
+
+img {
+	height: 130px;
+}
+
+button {
+	width: 135px;
+    background-color: white;
+    border: 1px black solid;
+}
+
+.row .text-center  {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#yourCharacter {
+	background-color: white;
+	border: 2px solid green;
+}
+
+#enemy {
+	background-color: red;
+	border: 2px solid black;
+}
+
+#defender {
+	background-color: black;
+	border: 2px solid green;
+}
