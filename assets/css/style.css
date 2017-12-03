@@ -9,32 +9,31 @@ header {
 }
 
 img {
-	height: 130px;
+	width: 130px;
+	height: 90px;
+	border: 1px solid black;
 }
 
 button {
-	width: 135px;
+	width: 155px;
     background-color: white;
     border: 1px black solid;
 }
-
+.col-sm-2 {
+	padding-left: 0;
+}
 .row .text-center  {
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
 }
 
-#yourCharacter {
-	background-color: white;
-	border: 2px solid green;
-}
-
-#enemy {
-	background-color: red;
-	border: 2px solid black;
-}
 
 #defender {
 	background-color: black;
 	border: 2px solid green;
+}
+
+#characters {
+	padding: 0px;
 }

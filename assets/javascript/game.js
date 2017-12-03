@@ -1,16 +1,14 @@
 $(document).ready(function(){
 
-var shanaraGame = {
+var shannaraGame = {
 
-	peopleToPick: {
-
-		amberle: {
+		fury: {
 			healthPoints: 100,
 			attackPower: 0,
 			counterAttackPower: 8,
 		},		
 
-		eretria: {
+		riga: {
 			healthPoints: 150,
 			attackPower: 0,
 			counterAttackPower: 10,
@@ -27,45 +25,44 @@ var shanaraGame = {
 			attackPower: 0,
 			counterAttackPower: 20,
 		}
-	}
+
 }
 
 var yourCharacter = "";
 var defender = "";
 
-// When on is clicked, the others change background color and border color and move bellow
+$("#furyHP").html(shannaraGame.fury.healthPoints);
+$("#rigaHP").html(shannaraGame.riga.healthPoints);
+$("#dagdaMorHP").html(shannaraGame.dagdaMor.healthPoints);
+$("#bandonHP").html(shannaraGame.bandon.healthPoints);
+
+
+
+// When picture is clicked, the others change background color and move bellow
 $(".character").on("click", function() {
 	console.log("character button clicked");
 	var selected = this.value;
-	console.log(this);
+	console.log(selected);
 
 	if (yourCharacter == "") {
 		selected = yourCharacter;
-	alert(selected);
+		alert(selected);
 		if (yourCharacter == "bandon") {
-			$("#eretria").contents().appendTo("#enemies");
-			$("#dagdaMor").contents().appendTo("#enemies");	
-			$("#amberle").contents().appendTo("#enemies");
+			$("#riga, #dagdaMor, #fury").contents().appendTo("#enemies");
 
 			$("#bandon").css("border", "2px solid green");
 		} else if (yourCharacter == "dagdaMor") {
-			$("#amberle").contents().appendTo("#enemies");
-			$("#bandon").contents().appendTo("#enemies");
-			$("#eretria").contents().appendTo("#enemies");
+			$("#fury, #bandon, #riga").contents().appendTo("#enemies");
 
 			$("#dagdaMor").css("border", "2px solid green");
-		} else if (yourCharacter == "eretria") {
-			$("#dagdaMor").contents().appendTo("#enemies");	
-			$("#amberle").contents().appendTo("#enemies");
-			$("#bandon").contents().appendTo("#enemies");
+		} else if (yourCharacter == "riga") {
+			$("#dagdaMor, #fury, #bandon").contents().appendTo("#enemies");	
 
-			$("#eretria").css("border", "2px solid green");
+			$("#riga").css("border", "2px solid green");
 		} else {
-			$("#bandon").contents().appendTo("#enemies");
-			$("#dagdaMor").contents().appendTo("#enemies");	
-			$("#eretria").contents().appendTo("#enemies");
-
-			$(".amberle").css("border", "2px solid green");
+			$("#bandon, #dagdaMor, #riga").contents().appendTo("#enemies");
+			$(".bandon, .dagdaMor, .riga").css("background-color", "red");
+			$(".fury").css("border", "2px solid green");
 		}
 	} else {
 		selected = defender;
@@ -76,20 +73,20 @@ $(".character").on("click", function() {
 		} else if (defender == "dagdaMor") {
 			$("#dagdaMor").contents().appendTo("#defenderArea");	
 			$("#dagdaMor").css("border", "2px solid green");
-		} else if (defender == "eretria") {
-			$("#eretria").contents().appendTo("#defenderArea");	
-			$("#eretria").css("border", "2px solid green");
+		} else if (defender == "riga") {
+			$("#riga").contents().appendTo("#defenderArea");	
+			$("#riga").css("border", "2px solid green");
 		} else {
-			$("#amberle").contents().appendTo("#defenderArea");	
-			$("#amberle").css("border", "2px solid green");
+			$("#fury").contents().appendTo("#defenderArea");	
+			$("#fury").css("border", "2px solid green");
 		} 
 	};
-})
+});
 
-
+//attack button
 
 //initialize the game here this is where we call all of the methods
 
 
-//restart button that appears at end of game
+//restart button that appears at end of game with end of game message
 });
