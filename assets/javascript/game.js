@@ -4,24 +4,28 @@ var shannaraGame = {
 
 		fury: {
 			healthPoints: 120,
+			originalAttackPower: 10,
 			attackPower: 10,
 			counterAttackPower: 10,
 		},		
 
 		riga: {
 			healthPoints: 100,
+			originalAttackPower: 8,
 			attackPower: 8,
 			counterAttackPower: 8,
 		},
 
 		dagdaMor: {
 			healthPoints: 200,
+			originalAttackPower: 15,
 			attackPower: 15,
 			counterAttackPower: 15,
 		},
 
 		bandon: {
 			healthPoints: 160,
+			originalAttackPower: 12,
 			attackPower: 12,
 			counterAttackPower: 12,
 		}
@@ -36,7 +40,6 @@ $("#furyHP").html(shannaraGame.fury.healthPoints);
 $("#rigaHP").html(shannaraGame.riga.healthPoints);
 $("#dagdaMorHP").html(shannaraGame.dagdaMor.healthPoints);
 $("#bandonHP").html(shannaraGame.bandon.healthPoints);
-
 
 
 // When picture is clicked, the others change background color and move bellow
@@ -90,7 +93,7 @@ $(".character").on("click", function() {
 });
 
 //attack button
-attackClicks = 1;
+
 $(".attack").on("click", function() {
 	
 	if (yourCharacter == "") {
@@ -98,19 +101,39 @@ $(".attack").on("click", function() {
 	} else if (defender == "") {
 		alert("Please select and enemy to attack.");
 	} else {
-		defender.healthPoints -= yourCharacter.attackPower;
-	// Having Issues here with .yourCharacter.attackPower
-		shannaraGame.yourCharacter.attackPower *= attackClicks;
-		attackClicks++;
-			console.log(attackClicks);
+
+	//attack
+		shannaraGame[defender].healthPoints -= shannaraGame[yourCharacter].attackPower;
+		shannaraGame[yourCharacter].attackPower += shannaraGame[yourCharacter].originalAttackPower;	
 			console.log("!!!your character is: " + yourCharacter);
-			console.log(shannaraGame.bandon.attackPower);
-	}
+			console.log("Player attack power: " + shannaraGame[yourCharacter].attackPower);
+			console.log("Defender's health points: " + shannaraGame[defender].healthPoints);
+			console.log("#" + defender + "Hp");
+			$("#" + defender + "Hp").html(shannaraGame[defender].healthPoints);
+
+	//counter attack by defender
+	
+	}	
 console.log("you are atacking: " + defender);
 console.log("your character is: " + yourCharacter);
 });
 
-//initialize the game here this is where we call all of the methods
+//call this function inside attack button
+function winLoose() {
+	if (shannaraGame[defender].healthPoints <= 0) {
+		//you win pick another defender
+		//if defeated all the enemies, win message 
+			//maybe have a counter for wins if wins = 3
+		//play again button appears
+		//restart game on click
+	} else if (shannaraGame[yourCharacter].healthPoints <= 0) {
+		//you loose message
+		//play again button appears
+		//restart game on click
+	} else {
+		//keep playing 
+	}
+}
 
 
 //restart button that appears at end of game with end of game message
