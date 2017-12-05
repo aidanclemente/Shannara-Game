@@ -17,37 +17,37 @@
 			<h1>Shannara RPG</h1>
 		</header>
 <!-- Characters to choose from and Your Character -->
-		<section class="container-fluid">
+		<section id="characterSection" class="container-fluid">
 			<div class="row">
 				<h3>Your Character</h3>
 			</div>
-			<div class="row col-sm-8"  id="characters">
+			<div class="row col-sm-12"  id="characters">
 			<!-- Fury -->
-					<div class="col-sm-2" id="fury">				
+					<div id="fury">				
 						<button class="character fury" value="fury">
-							<div class="row text-center name">fury</div>
+							<div class="row text-center name">Fury</div>
 							<img class="row text-center" src="assets/images/fury.jpg">
 							<div class="row text-center" id="furyHP">XXX</div>
 						</button>					
 					</div>
 			<!-- Riga -->
-					<div class="col-sm-2" id="riga">				
+					<div id="riga">				
 						<button class="character riga" value="riga">
-							<div class="row text-center name">riga</div>
+							<div class="row text-center name">Riga</div>
 							<img class="row text-center" src="assets/images/riga.jpg">
 							<div class="row text-center" id="rigaHP">YYY</div>
 						</button>					
 					</div>
 			<!-- Dagda Mor -->
-					<div class="col-sm-2" id="dagdaMor">				
+					<div id="dagdaMor">				
 						<button class="character dagdaMor" value="dagdaMor">
-							<div class="row text-center name">Dagda mor</div>
+							<div class="row text-center name">Dagda Mor</div>
 							<img class="row text-center" src="assets/images/dagdaMor1.jpg">
 							<div class="row text-center" id="dagdaMorHP">ZZZ</div>
 						</button>					
 					</div>
 			<!-- Bandon -->
-					<div class="col-sm-2" id="bandon">			
+					<div id="bandon">			
 						<button class="character bandon" value="bandon">
 							<div class="row text-center name">Bandon</div>
 							<img class="row text-center" src="assets/images/bandon1.jpg">
@@ -61,7 +61,7 @@
 			<div class="row">
 				<h3>Enemies Available to Attack</h3>
 			</div>
-			<div class="row col-sm-8" id="enemies">		
+			<div class="row col-sm-12" id="enemies">		
 			</div>
 		</section>
 <!-- Fight section with button -->
@@ -70,7 +70,7 @@
 				<h3>Fight Section</h3> 
 			</div>
 			<div class="row">
-				<button class="btn btn-default btn-xs attack">Attack!</button>
+				<button class="attack">Attack!</button>
 			</div>
 		</section>
 <!-- Defender and naration about game -->
@@ -81,7 +81,10 @@
 			<div class="row" id="defenderArea">
 			</div>
 			<div class="row">
-				<div id="narration">The Words go here</div>
+				<div id="narration"></div>
+			</div>
+			<div class="row">
+				<button id="restart">Play Again</button>
 			</div>
 		</section>
 	</div>

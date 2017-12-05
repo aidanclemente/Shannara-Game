@@ -19,9 +19,7 @@ button {
     background-color: white;
     border: 1px black solid;
 }
-.col-sm-2 {
-	padding-left: 0;
-}
+
 .row .text-center  {
 	display: block;
 	margin-right: auto;
@@ -30,4 +28,13 @@ button {
 
 #characters, #enemies {
 	padding: 0px;
+}
+
+#narration {
+	color: aliceblue;
+	font-size: 18px;
+}
+
+#restart {
+	display: none;
 }

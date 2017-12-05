@@ -3,38 +3,38 @@ $(document).ready(function(){
 var shannaraGame = {
 
 		fury: {
-			healthPoints: 120,
+			healthPoints: 180,
 			originalAttackPower: 10,
 			attackPower: 10,
-			counterAttackPower: 10,
+			counterAttackPower: 12,
 		},		
 
 		riga: {
-			healthPoints: 100,
+			healthPoints: 160,
 			originalAttackPower: 8,
 			attackPower: 8,
-			counterAttackPower: 8,
+			counterAttackPower: 10,
 		},
 
 		dagdaMor: {
-			healthPoints: 200,
+			healthPoints: 240,
 			originalAttackPower: 15,
 			attackPower: 15,
-			counterAttackPower: 15,
+			counterAttackPower: 17,
 		},
 
 		bandon: {
-			healthPoints: 160,
+			healthPoints: 210,
 			originalAttackPower: 12,
 			attackPower: 12,
-			counterAttackPower: 12,
+			counterAttackPower: 14,
 		}
 
 }
 
 var yourCharacter = "";
 var defender = "";
-
+var wins = 0;
 
 $("#furyHP").html(shannaraGame.fury.healthPoints);
 $("#rigaHP").html(shannaraGame.riga.healthPoints);
@@ -42,7 +42,7 @@ $("#dagdaMorHP").html(shannaraGame.dagdaMor.healthPoints);
 $("#bandonHP").html(shannaraGame.bandon.healthPoints);
 
 
-// When picture is clicked, the others change background color and move bellow
+// Selecting Character and Defender
 $(".character").on("click", function() {
 	var selected = this.value;
 
@@ -109,18 +109,60 @@ $(".attack").on("click", function() {
 			console.log("Player attack power: " + shannaraGame[yourCharacter].attackPower);
 			console.log("Defender's health points: " + shannaraGame[defender].healthPoints);
 			console.log("#" + defender + "Hp");
-			$("#" + defender + "Hp").html(shannaraGame[defender].healthPoints);
 
+		//$("#" + defender + "Hp").html(shannaraGame[defender].healthPoints);
+
+		if (defender == "dagdaMor") {
+			$("#dagdaMorHP").html(shannaraGame[defender].healthPoints);
+		} else if (defender == "riga") {
+			$("#rigaHP").html(shannaraGame[defender].healthPoints);
+		} else if (defender == "fury") {
+			$("#furyHP").html(shannaraGame[defender].healthPoints);
+		} else {
+			$("#bandonHP").html(shannaraGame[defender].healthPoints);
+		};
 	//counter attack by defender
-	
+		shannaraGame[yourCharacter].healthPoints -= shannaraGame[defender].attackPower;
+		if (yourCharacter == "dagdaMor") {
+			$("#dagdaMorHP").html(shannaraGame[yourCharacter].healthPoints);
+		} else if (yourCharacter == "riga") {
+			$("#rigaHP").html(shannaraGame[yourCharacter].healthPoints);
+		} else if (yourCharacter == "fury") {
+			$("#furyHP").html(shannaraGame[yourCharacter].healthPoints);
+		} else {
+			$("#bandonHP").html(shannaraGame[yourCharacter].healthPoints);
+		};
+
+		// $("#" + yourCharacter + "Hp").html(shannaraGame[yourCharacter].healthPoints);
+
+		$("#narration").html("You attacked " + defender + " for " + shannaraGame[yourCharacter].attackPower + " damage." + "<br>" +
+			defender + " attacked you back for " + shannaraGame[defender].attackPower + " damage.");
+		winLoose();
+		gameOver();
 	}	
-console.log("you are atacking: " + defender);
-console.log("your character is: " + yourCharacter);
+
 });
 
 //call this function inside attack button
 function winLoose() {
 	if (shannaraGame[defender].healthPoints <= 0) {
+		if (defender == "dagdaMor") {
+			wins++;
+			$("#dagdaMor").attr("style", "display: none");
+			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
+		} else if (defender == "fury") {
+			wins++;
+			$("#fury").attr("style", "display: none");
+			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
+		} else if (defender == "riga") {
+			wins++
+			$("#riga").attr("style", "display: none");
+			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
+		} else {
+			wins++;
+			$("#bandon").attr("style", "display: none");
+			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
+		};
 		//you win pick another defender
 		//if defeated all the enemies, win message 
 			//maybe have a counter for wins if wins = 3
@@ -134,6 +176,21 @@ function winLoose() {
 		//keep playing 
 	}
 }
+
+function gameOver() {
+	if (wins == 3) {
+		$("#narration").html("Congratuations!! You have defeated all of your enemies. You are now ready to battle the Warlock Lord!" + "<br>" + "Go rest and gather your strength. The Warlock Lord will be coming for you soon!!!");
+		$("#restart").attr("style", "display: block");
+	}
+};
+
+$("#restart").on("click", function startGame() {
+	yourCharacter = "";
+	defender = "";
+	wins = 0;
+
+});
+
 
 
 //restart button that appears at end of game with end of game message
