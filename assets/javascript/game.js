@@ -32,6 +32,8 @@ $(document).ready(function() {
 	var defender = "";
 	var wins = 0;
 
+	$("#body").css("background-image", "url(assets/images/background" + [Math.floor(Math.random() * 5) +1] + ".jpg)");
+
 	$("#furyHP").html(shannaraGame.fury.healthPoints);
 	$("#rigaHP").html(shannaraGame.riga.healthPoints);
 	$("#dagdaMorHP").html(shannaraGame.dagdaMor.healthPoints);
@@ -114,7 +116,7 @@ $(document).ready(function() {
 		if (wins == 3) {
 			$("#narration").html("");
 			$("#yourCharacter").html("WINNER!!!!");
-			$("#defender").html("Congratuations!! You have defeated all of your enemies. <br> You are now ready to battle the Warlock Lord! <br> Go rest and gather your strength. <br> The Warlock Lord will be coming for you soon!!!");
+			$("#defender").html("Congratuations!! You have defeated all of your enemies.<br> Go rest and gather your strength. <br> The Warlock Lord will be coming for you soon!!!");
 			$("#defender").css("color", "darkblue");
 			$("#restart").attr("style", "display: block");
 			$(".attack").attr("style", "display: none");
