@@ -32,7 +32,7 @@ $(document).ready(function() {
 	var defender = "";
 	var wins = 0;
 
-	$("#body").css("background-image", "url(assets/images/background" + [Math.floor(Math.random() * 5) +1] + ".jpg)");
+	$("#body").css("background-image", "url(assets/images/background" + [Math.floor(Math.random() * 7) +1] + ".jpg)");
 
 	$("#furyHP").html(shannaraGame.fury.healthPoints);
 	$("#rigaHP").html(shannaraGame.riga.healthPoints);
@@ -51,6 +51,7 @@ $(document).ready(function() {
 
 		if (yourCharacter == "") {
 			yourCharacter = selected;
+			$("." + yourCharacter).attr("disabled", true);
 			if (yourCharacter == "bandon") {
 				$("#riga, #dagdaMor, #fury").appendTo("#enemies");
 	 			$(".fury, .dagdaMor, .riga").css("background-color", "red");
@@ -70,6 +71,7 @@ $(document).ready(function() {
 			}
 		} else {
 			defender = selected;
+			$("#" + defender).attr("disabled", true);
 			$("#fightSection").attr("style", "display: block");
 			$("#defender").html("Defender");
 			$("#" + defender).appendTo("#defenderArea");
@@ -109,6 +111,10 @@ $(document).ready(function() {
 			$("#defender").css("color", "red");
 			$("#narration").html("");
 			$("#restart").attr("style", "display: block");
+			$("#fightSection").attr("style", "display: none");
+			$("#availEnemies").attr("style", "display: none");
+			$("#yourCharacter").attr("style", "display: none");
+			$(".attack").attr("style", "display: none");			
 		} 
 	};
 
