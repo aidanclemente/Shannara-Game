@@ -14,16 +14,18 @@ img {
 
 }
 
+h3 {
+	margin: 5px 0;
+}
+
 button {
 	width: 155px;
     background-color: white;
     border: 1px black solid;
 }
 
-.row .text-center  {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
+#top {
+    margin-top: 10px;
 }
 
 #characters, #enemies {
@@ -36,5 +38,15 @@ button {
 }
 
 #restart {
+	display: none;
+}
+
+.row .text-center  {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.attack, #availEnemies, #fightSection, #defender {
 	display: none;
 }
