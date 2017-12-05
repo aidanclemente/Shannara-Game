@@ -52,26 +52,27 @@ $(document).ready(function() {
 		if (yourCharacter == "") {
 			yourCharacter = selected;
 			$("." + yourCharacter).attr("disabled", true);
+			$("." + yourCharacter).css("border", "2px solid green");
+			$("#name" + yourCharacter).css("color", "black");
+			$("#" + yourCharacter + "HP").css("color", "black");
+
 			if (yourCharacter == "bandon") {
 				$("#riga, #dagdaMor, #fury").appendTo("#enemies");
-	 			$(".fury, .dagdaMor, .riga").css("background-color", "red");
-				$(".bandon").css("border", "2px solid green");
+	 			$(".fury, .dagdaMor, .riga").css("background-color", "red");			
 			} else if (yourCharacter == "dagdaMor") {
 				$("#fury, #bandon, #riga").appendTo("#enemies");
 				$(".bandon, .fury, .riga").css("background-color", "red");
-				$(".dagdaMor").css("border", "2px solid green");
 			} else if (yourCharacter == "riga") {
 				$("#dagdaMor, #fury, #bandon").appendTo("#enemies");	
 				$(".bandon, .dagdaMor, .fury").css("background-color", "red");
-				$(".riga").css("border", "2px solid green");
 			} else {
 				$("#bandon, #dagdaMor, #riga").appendTo("#enemies");
 				$(".bandon, .dagdaMor, .riga").css("background-color", "red");
-				$(".fury").css("border", "2px solid green");
 			}
 		} else {
 			defender = selected;
 			$("#" + defender).attr("disabled", true);
+			$(".attack").attr("disabled", false);
 			$("#fightSection").attr("style", "display: block");
 			$("#defender").html("Defender");
 			$("#" + defender).appendTo("#defenderArea");
@@ -100,6 +101,7 @@ $(document).ready(function() {
 
 	function winLoose() {
 		if (shannaraGame[defender].healthPoints <= 0) {
+			$(".attack").attr("disabled", true);
 			$("#" + defender).attr("style", "display: none");
 			$("#defender").html("You have defeated " + defender + "! Choose another enemy to battle!");
 			$("#defender").css("color", "yellow");
