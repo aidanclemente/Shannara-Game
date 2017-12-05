@@ -1,35 +1,31 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
 var shannaraGame = {
 
-		fury: {
-			healthPoints: 180,
-			originalAttackPower: 10,
-			attackPower: 10,
-			counterAttackPower: 12,
-		},		
-
-		riga: {
-			healthPoints: 160,
-			originalAttackPower: 8,
-			attackPower: 8,
-			counterAttackPower: 10,
-		},
-
-		dagdaMor: {
-			healthPoints: 240,
-			originalAttackPower: 15,
-			attackPower: 15,
-			counterAttackPower: 17,
-		},
-
-		bandon: {
-			healthPoints: 210,
-			originalAttackPower: 12,
-			attackPower: 12,
-			counterAttackPower: 14,
-		}
-
+	fury: {
+		healthPoints: 180,
+		originalAttackPower: 10,
+		attackPower: 10,
+		counterAttackPower: 12,
+	},		
+	riga: {
+		healthPoints: 160,
+		originalAttackPower: 8,
+		attackPower: 8,
+		counterAttackPower: 10,
+	},
+	dagdaMor: {
+		healthPoints: 240,
+		originalAttackPower: 15,
+		attackPower: 15,
+		counterAttackPower: 17,
+	},
+	bandon: {
+		healthPoints: 210,
+		originalAttackPower: 12,
+		attackPower: 12,
+		counterAttackPower: 14,
+	}
 }
 
 var yourCharacter = "";
@@ -41,9 +37,10 @@ $("#rigaHP").html(shannaraGame.riga.healthPoints);
 $("#dagdaMorHP").html(shannaraGame.dagdaMor.healthPoints);
 $("#bandonHP").html(shannaraGame.bandon.healthPoints);
 
-
 // Selecting Character and Defender
 $(".character").on("click", function() {
+	$("#yourCharacter").html("Your Character");
+
 	var selected = this.value;
 
 	if (yourCharacter == "") {
@@ -67,28 +64,10 @@ $(".character").on("click", function() {
 		}
 	} else {
 		defender = selected;
-
-		if (defender == "bandon") {
-			$("#bandon").appendTo("#defenderArea");
-			$(".bandon").css("border", "2px solid green");
-			$(".bandon").css("color", "white");
-			$(".bandon").css("background-color", "black");
-		} else if (defender == "dagdaMor") {
-			$("#dagdaMor").appendTo("#defenderArea");	
-			$(".dagdaMor").css("border", "2px solid green");
-			$(".dagdaMor").css("color", "white");
-			$(".dagdaMor").css("background-color", "black");
-		} else if (defender == "riga") {
-			$("#riga").appendTo("#defenderArea");	
-			$(".riga").css("border", "2px solid green");
-			$(".riga").css("color", "white");
-			$(".riga").css("background-color", "black");
-		} else {
-			$("#fury").appendTo("#defenderArea");	
-			$(".fury").css("border", "2px solid green");
-			$(".fury").css("color", "white");
-			$(".fury").css("background-color", "black");
-		} 
+		$("#" + defender).appendTo("#defenderArea");
+		$("." + defender).css("border", "2px solid green");
+		$("." + defender).css("color", "white");
+		$("." + defender).css("background-color", "black");
 	};
 });
 
@@ -105,36 +84,11 @@ $(".attack").on("click", function() {
 	//attack
 		shannaraGame[defender].healthPoints -= shannaraGame[yourCharacter].attackPower;
 		shannaraGame[yourCharacter].attackPower += shannaraGame[yourCharacter].originalAttackPower;	
-			console.log("!!!your character is: " + yourCharacter);
-			console.log("Player attack power: " + shannaraGame[yourCharacter].attackPower);
-			console.log("Defender's health points: " + shannaraGame[defender].healthPoints);
-			console.log("#" + defender + "Hp");
+		$("#" + defender + "HP").html(shannaraGame[defender].healthPoints);
 
-		//$("#" + defender + "Hp").html(shannaraGame[defender].healthPoints);
-
-		if (defender == "dagdaMor") {
-			$("#dagdaMorHP").html(shannaraGame[defender].healthPoints);
-		} else if (defender == "riga") {
-			$("#rigaHP").html(shannaraGame[defender].healthPoints);
-		} else if (defender == "fury") {
-			$("#furyHP").html(shannaraGame[defender].healthPoints);
-		} else {
-			$("#bandonHP").html(shannaraGame[defender].healthPoints);
-		};
 	//counter attack by defender
 		shannaraGame[yourCharacter].healthPoints -= shannaraGame[defender].attackPower;
-		if (yourCharacter == "dagdaMor") {
-			$("#dagdaMorHP").html(shannaraGame[yourCharacter].healthPoints);
-		} else if (yourCharacter == "riga") {
-			$("#rigaHP").html(shannaraGame[yourCharacter].healthPoints);
-		} else if (yourCharacter == "fury") {
-			$("#furyHP").html(shannaraGame[yourCharacter].healthPoints);
-		} else {
-			$("#bandonHP").html(shannaraGame[yourCharacter].healthPoints);
-		};
-
-		// $("#" + yourCharacter + "Hp").html(shannaraGame[yourCharacter].healthPoints);
-
+		$("#" + yourCharacter + "HP").html(shannaraGame[yourCharacter].healthPoints);
 		$("#narration").html("You attacked " + defender + " for " + shannaraGame[yourCharacter].attackPower + " damage." + "<br>" +
 			defender + " attacked you back for " + shannaraGame[defender].attackPower + " damage.");
 		winLoose();
@@ -146,36 +100,21 @@ $(".attack").on("click", function() {
 //call this function inside attack button
 function winLoose() {
 	if (shannaraGame[defender].healthPoints <= 0) {
-		if (defender == "dagdaMor") {
-			wins++;
-			$("#dagdaMor").attr("style", "display: none");
-			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
-		} else if (defender == "fury") {
-			wins++;
-			$("#fury").attr("style", "display: none");
-			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
-		} else if (defender == "riga") {
-			wins++
-			$("#riga").attr("style", "display: none");
-			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
-		} else {
-			wins++;
-			$("#bandon").attr("style", "display: none");
-			$("#narration").html("You have defeated " + defender + "! Choose another enemy to battle!")
-		};
-		//you win pick another defender
-		//if defeated all the enemies, win message 
-			//maybe have a counter for wins if wins = 3
-		//play again button appears
-		//restart game on click
+		$("#" + defender).attr("style", "display: none");
+		$("#defender").html("You have defeated " + defender + "! Choose another enemy to battle!");
+		$("#defender").css("color", "yellow");
+		$("#narration").html("");
+		wins++;
 	} else if (shannaraGame[yourCharacter].healthPoints <= 0) {
-		//you loose message
-		//play again button appears
-		//restart game on click
+		$("#" + yourCharacter).attr("style", "display: none");
+		$("#defender").html("You were defeated by " + defender + "! Attend to your wounds and try again.")
+		$("#defender").css("color", "red");
+		$("#narration").html("");
+		$("#restart").attr("style", "display: block");
 	} else {
 		//keep playing 
 	}
-}
+};
 
 function gameOver() {
 	if (wins == 3) {
@@ -185,13 +124,7 @@ function gameOver() {
 };
 
 $("#restart").on("click", function startGame() {
-	yourCharacter = "";
-	defender = "";
-	wins = 0;
-
+	location.reload();
 });
 
-
-
-//restart button that appears at end of game with end of game message
 });
