@@ -53,7 +53,7 @@ $(document).ready(function() {
 			yourCharacter = selected;
 			$("." + yourCharacter).attr("disabled", true);
 			$("." + yourCharacter).css("border", "2px solid green");
-			$("#name" + yourCharacter).css("color", "black");
+			$("#name" + yourCharacter, ).css("color", "black");
 			$("#" + yourCharacter + "HP").css("color", "black");
 
 			if (yourCharacter == "bandon") {
@@ -73,13 +73,12 @@ $(document).ready(function() {
 			defender = selected;
 			$("#" + defender).attr("disabled", true);
 			$(".attack").attr("disabled", false);
-			$("#fightSection").attr("style", "display: block");
+			$("#fightSection, .attack").attr("style", "display: block");
 			$("#defender").html("Defender");
 			$("#" + defender).appendTo("#defenderArea");
 			$("." + defender).css("border", "2px solid green");
 			$("." + defender).css("color", "white");
 			$("." + defender).css("background-color", "black");
-			$(".attack").attr("style", "display: block");
 		};
 	});
 
@@ -113,10 +112,7 @@ $(document).ready(function() {
 			$("#defender").css("color", "red");
 			$("#narration").html("");
 			$("#restart").attr("style", "display: block");
-			$("#fightSection").attr("style", "display: none");
-			$("#availEnemies").attr("style", "display: none");
-			$("#yourCharacter").attr("style", "display: none");
-			$(".attack").attr("style", "display: none");			
+			$("#fightSection, #availEnemies, #yourCharacter, .attack").attr("style", "display: none");		
 		} 
 	};
 
@@ -127,9 +123,7 @@ $(document).ready(function() {
 			$("#defender").html("Congratuations!! You have defeated all of your enemies.<br> Go rest and gather your strength. <br> The Warlock Lord will be coming for you soon!!!");
 			$("#defender").css("color", "darkblue");
 			$("#restart").attr("style", "display: block");
-			$(".attack").attr("style", "display: none");
-			$("#fightSection").attr("style", "display: none");
-			$("#availEnemies").attr("style", "display: none");
+			$(".attack, #availEnemies, #fightSection").attr("style", "display: none");
 		}
 	};
 
