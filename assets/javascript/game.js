@@ -3,24 +3,28 @@ $(document).ready(function() {
 	var shannaraGame = {
 
 		fury: {
+			name: "Fury",
 			healthPoints: 180,
 			originalAttackPower: 10,
 			attackPower: 10,
 			counterAttackPower: 12,
 		},		
 		riga: {
+			name: "Riga",
 			healthPoints: 160,
 			originalAttackPower: 8,
 			attackPower: 8,
 			counterAttackPower: 10,
 		},
 		dagdaMor: {
+			name: "Dagda Mor",
 			healthPoints: 240,
 			originalAttackPower: 15,
 			attackPower: 15,
 			counterAttackPower: 17,
 		},
 		bandon: {
+			name: "Bandon",
 			healthPoints: 210,
 			originalAttackPower: 12,
 			attackPower: 12,
@@ -92,7 +96,7 @@ $(document).ready(function() {
 //counter attack by defender
 		shannaraGame[yourCharacter].healthPoints -= shannaraGame[defender].attackPower;
 		$("#" + yourCharacter + "HP").html(shannaraGame[yourCharacter].healthPoints);
-		$("#narration").html("You attacked " + defender + " for " + shannaraGame[yourCharacter].attackPower + " damage." + "<br>" + defender + " attacked you back for " + shannaraGame[defender].attackPower + " damage.");
+		$("#narration").html("You attacked " + shannaraGame[defender].name + " for " + shannaraGame[yourCharacter].attackPower + " damage." + "<br>" + shannaraGame[defender].name + " attacked you back for " + shannaraGame[defender].attackPower + " damage.");
 		winLoose();
 		gameOver();
 		
@@ -102,13 +106,13 @@ $(document).ready(function() {
 		if (shannaraGame[defender].healthPoints <= 0) {
 			$(".attack").attr("disabled", true);
 			$("#" + defender).attr("style", "display: none");
-			$("#defender").html("You have defeated " + defender + "! Choose another enemy to battle!");
+			$("#defender").html("You have defeated " + shannaraGame[defender].name + "! Choose another enemy to battle!");
 			$("#defender").css("color", "yellow");
 			$("#narration").html("");
 			wins++;
 		} if (shannaraGame[yourCharacter].healthPoints <= 0) {
 			$("#" + yourCharacter).attr("style", "display: none");
-			$("#defender").html("You were defeated by " + defender + "! Attend to your wounds and try again.")
+			$("#defender").html("You were defeated by " + shannaraGame[defender].name + "! Attend to your wounds and try again.")
 			$("#defender").css("color", "red");
 			$("#narration").html("");
 			$("#restart").attr("style", "display: block");
